@@ -7,7 +7,7 @@
 #include <chrono>
 #include <iostream>
 
-#include "sole.hpp"
+#include "sole/sole.hpp"
 using namespace sole;
 
 namespace run
