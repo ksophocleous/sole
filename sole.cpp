@@ -137,6 +137,10 @@
     }
 #endif
 
+#ifdef _MSC_VER
+#pragma warning(disable:4244)
+#endif
+
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include "sole/sole.hpp"
