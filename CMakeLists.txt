@@ -9,6 +9,10 @@ if (MSVC)
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif()
 
+if(CMAKE_COMPILER_IS_GNUCXX)
+	set(CMAKE_CXX_FLAGS "-std=c++11")
+endif()
+
 set(hdr_public
 	"include/sole/sole.hpp")
 
