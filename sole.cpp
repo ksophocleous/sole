@@ -218,18 +218,25 @@ namespace {
         return res;
     }
 
-    std::string printftime( uint64_t timestamp_secs = 0, const std::string &locale = std::string() ) {
+    std::string printftime( uint64_t timestamp_secs = 0, std::string /*locale*/ = "") {
         std::string timef;
         try {
             std::string locale; // = "es-ES", "Chinese_China.936", "en_US.UTF8", etc...
             std::time_t t = timestamp_secs;
-                std::tm tm = *std::localtime(&t);
+            std::tm tm = *std::localtime(&t);
             std::stringstream ss;
+
 #if 1
-                std::locale lc( locale.c_str() );
-                ss.imbue( lc );
-                ss << std::put_time( &tm, "\"%c\"" );
-#else
+            ss << "\"" << tm.tm_year << "-" << tm.tm_mon + 1 << "-" << tm.tm_mday << " " << tm.tm_hour << ":" << tm.tm_min << ":" << tm.tm_sec << "\"";
+#endif
+
+#if 0
+            std::locale lc( locale.c_str() );
+            ss.imbue( lc );
+            ss << std::put_time( &tm, "\"%c\"" );
+#endif
+
+#if 0
 #   ifdef _MSC_VER
                 // msvc crashes on %z and %Z
                 ss << std::put_time( &tm, "\"%Y-%m-%d %H:%M:%S\"" );
